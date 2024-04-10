@@ -1,5 +1,5 @@
 # for the whole system
-project_dir: '/home/ruan/sandbox/cca_workspace/'
+project_dir: '/home/ruan/sandbox/cable_shaping_mpc/'
 
 # for environment
 env/sim_or_real: 'sim'

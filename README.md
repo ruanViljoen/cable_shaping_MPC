@@ -196,4 +196,4 @@ The format of the training dataset is (-1, 117). Each row is a 117-dimension sta
 
 ## Contact
 
-If you have any question, feel free to raise an issue (recommended) or contact the authors: Mingrui Yu, [ymr20@mails.tsinghua.edu.cn](mailto:ymr20@mails.tsinghua.edu.cn)
+If you have any question, feel free to raise an issue (recommended) or contact the author: Ruan Viljoen, [rm.viljoen@gmail.com](mailto:rm.viljoen@gmail.com)
