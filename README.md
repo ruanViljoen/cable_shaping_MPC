@@ -1,4 +1,8 @@
-![Alt Text](comparison.gif)
+
+<div align="center">
+<img src="comparison.gif" style="max-width: 100%;">
+</div>
+
 
 Repository for the submitted (still under review) CCA 2024 paper "Towards reliable and fast cable shaping: Combining learned interaction models with model predictive control".
 This research builds on the what was proposed in ["Global Model Learning for Large Deformation Control of Elastic Deformable Linear Objects: An Efficient and Adaptive Approach"](https://mingrui-yu.github.io/shape_control_DLO_2/) by Yu et al.
@@ -57,7 +61,7 @@ pip install casadi
 
 Clone the repo:
 ```
-git clone https://github.com/Mingrui-Yu/shape_control_DLO_2.git
+git clone https://github.com/ruanViljoen/cable_shaping_MPC.git
 ```
 
 Build the catkin workspaces:
@@ -67,15 +71,15 @@ cd <YOUR_PATH>/cable_shaping_MPC/ws_dlo
 catkin_make
 ```
 
-Change the variable "project_dir" in *ws_dlo/src/dlo_system_pkg/config/params_sim.yaml* to '<YOUR_PATH>/shape_control_DLO_2/'.
+Change the variable "project_dir" in *ws_dlo/src/dlo_system_pkg/config/params_sim.yaml* to '<YOUR_PATH>/cable_shaping_MPC/'.
 
 ## Usage
 
 Give permissions to the simulation environment:
 
 ```
-chmod -R 755 <YOUR_PATH>/shape_control_DLO/env_dlo/env_2D
-chmod -R 755 <YOUR_PATH>/shape_control_DLO/env_dlo/env_3D
+chmod -R 755 <YOUR_PATH>/cable_shaping_MPC/env_dlo/env_2D
+chmod -R 755 <YOUR_PATH>/cable_shaping_MPC/env_dlo/env_3D
 ```
 
 ### Parameter Setting
@@ -94,7 +98,7 @@ We provide a demo of  DLO shape control, which can be easily run with as less de
 Source the workspace:
 
 ```
-cd <YOUR_PATH>/shape_control_DLO_2/ws_dlo
+cd <YOUR_PATH>/cable_shaping_MPC/ws_dlo
 source devel/setup.bash
 ```
 
@@ -107,11 +111,6 @@ Then, **activate your python3 env**, and run:
 
 ```
 rosrun dlo_manipulation_pkg sim_env.py
-```
-
-After the running, **activate your python3 env** and run the following script to evaluate the performance:
-```
-rosrun dlo_manipulation_pkg control_results_compare.py
 ```
 
 ### Offline Train the Jacobian model
@@ -188,7 +187,7 @@ In our implementation, the action is formulated as the above format in both 2D a
 
 ### Training Dataset
 
-Our offline collected data are in *shape_control_DLO/data/train_data*.
+Our offline collected data are in *cable_shaping_MPC/data/train_data*.
 
 - state_0.py: the data of the manipulated DLO. Data amount: 60k.
 - state_1.npy ~ state_10.npy: the data of 10 different DLOs. Data amount: 6k for each DLO. The parameters of the DLOs are listed in the paper.
