@@ -1,3 +1,5 @@
+
+
 #!/usr/bin/env python
 
 # compare the control results of methods
@@ -42,7 +44,8 @@ def evaluateControlResults(names, num_case=100, delta_t=0.1):
         success = 0
         for i in range(num_case):
             if env == 'sim':
-                state = np.load(project_dir + "results/" + env + "/control/" + name + "/" + env_dim  + "/state_" + str(i) + ".npy")
+                # state = np.load(project_dir + "results/" + env + "/control/" + name + "/" + env_dim  + "/state_" + str(i) + ".npy")
+                state = np.load(project_dir + "results/baseline/state_" + str(i) + ".npy")
 
             desired_positions = state[-1, I.desired_pos_idx] 
             positions = state[:, I.fps_pos_idx]

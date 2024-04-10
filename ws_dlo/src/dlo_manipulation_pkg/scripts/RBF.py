@@ -126,6 +126,16 @@ class JacobianPredictor(object):
 
         self.online_dataset = []
 
+    # Custom function to get the jacobian from the pytorch NN
+    def get_jacobian(self, state_input):
+        numFPs = self.numFPs
+        length = 0.5
+        # state_input = state[I.state_input_idx].reshape(1, -1) # one row matrix
+        length_torch = torch.tensor(length).cuda()
+        state_input_torch = self.relativeStateRepresentationTorch(torch.tensor(state_input)).cuda()
+        J_pred = self.model_J(state_input_torch)
+        J_pred[:, :, [3, 4, 5, 9, 10, 11]] *= length_torch.reshape(-1, 1, 1)  # no normalize 要改 # RBF_abs 要改
+        return J_pred.cpu().detach().numpy().reshape(3 * numFPs, 12) 
         
     # ------------------------------------------------------
     def LoadDataForTraining(self, train_dataset=None):

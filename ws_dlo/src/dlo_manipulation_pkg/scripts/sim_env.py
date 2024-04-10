@@ -18,10 +18,12 @@ from utils.state_index import I
 from geometry_msgs.msg import Vector3
 
 control_method = rospy.get_param("controller/control_law")
-if control_method == 'ours':
-    from controller_ours import Controller
-
-
+if control_method == 'baseline':
+    from controller_baseline import Controller
+if control_method == 'MPC':
+    from controller_MPC import Controller
+if control_method == 'MPC fast':
+    from controller_MPC_fast import Controller
 
 class Environment(object):
     def __init__(self):
@@ -40,9 +42,6 @@ class Environment(object):
         self.env = UnityToGymWrapper(unity_env)
         self.controller = Controller()
         self.control_input = np.zeros((12, ))
-
-
-
     
     # -------------------------------------------------------------------
     def mainLoop(self):
@@ -52,7 +51,9 @@ class Environment(object):
             state[I.left_end_avel_idx + I.right_end_avel_idx] /= 2*np.pi  # change the unit of the input angular velocity from rad/s  to 2pi*rad/s
 
         while not rospy.is_shutdown():
+            start_time = time.time()
             self.control_input = self.controller.generateControlInput(state).copy()
+            print('elapsed time: ', time.time() - start_time)
             self.control_input[[3, 4, 5, 9, 10, 11]] *= 2*np.pi  # change the unit of the output angular velocity from 2pi*rad/s  torad/s
 
             state, reward, done, _ = self.env.step(self.control_input)

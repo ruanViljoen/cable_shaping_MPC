@@ -1,29 +1,32 @@
-# shape_control_DLO_2
+![Alt Text](comparison.gif)
 
-[Project website](https://mingrui-yu.github.io/shape_control_DLO_2/)
+Repository for the submitted (still under review) CCA 2024 paper "Towards reliable and fast cable shaping: Combining learned interaction models with model predictive control".
+This research builds on the what was proposed in ["Global Model Learning for Large Deformation Control of Elastic Deformable Linear Objects: An Efficient and Adaptive Approach"](https://mingrui-yu.github.io/shape_control_DLO_2/) by Yu et al.
 
-Repository for the IEEE T-RO Paper "Global Model Learning for Large Deformation Control of Elastic Deformable Linear Objects: An Efficient and Adaptive Approach".
+More specifically, we slightly modified the simulation environment they developed, which is available at https://github.com/Mingrui-Yu/shape_control_DLO_2
 
 Here we provide:
-* the code for the model learning and controller
+* the code for the model learning and baseline controller
+* the code for proposed MPC controller
 * the offline training data
 * the offline learned deformation model
 * the built simulation environment
 
 
 ## Dependencies
-* Ubuntu 18.04
-* ROS Melodic
+* Ubuntu 20.04
+* ROS Noetic
 * Nvidia driver & CUDA
 * PyTorch in python3 env
 * [Unity](https://unity.com/) for Linux 2020.03
 * [Obi](http://obi.virtualmethodstudio.com/): for simulating the DLOs
 * [Unity ML-Agents Toolkit](https://github.com/Unity-Technologies/ml-agents): for the communication between the Unity and Python scripts
 * [PyTorch-Radial-Basis-Function-Layer](https://github.com/JeremyLinux/PyTorch-Radial-Basis-Function-Layer): we use the code for the implementation of RBFN in pytorch
+* [CasADi](https://web.casadi.org/): for automatic differentiation and interface to solvers
 
 ## Installation
 
-Install ROS Melodic on Ubuntu 18.04.
+Install ROS Noetic on Ubuntu 20.04.
 
 Install Unity for Linux 2020.03 [doc](https://docs.unity3d.com/2020.2/Documentation/Manual/GettingStartedInstallingHub.html).
 
@@ -49,6 +52,7 @@ pip install sklearn
 pip install empy
 pip install PyYAML
 pip install scipy
+pip install casadi
 ```
 
 Clone the repo:
@@ -59,7 +63,7 @@ git clone https://github.com/Mingrui-Yu/shape_control_DLO_2.git
 Build the catkin workspaces:
 
 ```
-cd <YOUR_PATH>/shape_control_DLO_2/ws_dlo
+cd <YOUR_PATH>/cable_shaping_MPC/ws_dlo
 catkin_make
 ```
 
