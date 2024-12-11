@@ -4,7 +4,7 @@
 </div>
 
 
-Repository for the submitted CCA 2024 paper "Towards reliable and fast cable shaping: Combining learned interaction models with model predictive control".
+Repository for the CCA 2024 paper "Towards reliable and fast cable shaping: Combining learned interaction models with model predictive control".
 This research builds on the what was proposed in ["Global Model Learning for Large Deformation Control of Elastic Deformable Linear Objects: An Efficient and Adaptive Approach"](https://mingrui-yu.github.io/shape_control_DLO_2/) by Yu et al.
 
 More specifically, we slightly modified the simulation environment they developed, which is available at https://github.com/Mingrui-Yu/shape_control_DLO_2
